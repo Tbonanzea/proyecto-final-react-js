@@ -32,7 +32,7 @@ const NavBar = () => {
 					<Nav.Link href="#">Contacto</Nav.Link>
 				</Nav>
 				<Nav.Link className="d-flex col-2 justify-content-end">
-					<a className="">
+					<a href="#">
 						<CartWidget className="" /> | Items: 0
 					</a>
 				</Nav.Link>
