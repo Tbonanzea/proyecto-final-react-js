@@ -10,6 +10,7 @@ const ItemDetailContainer = () => {
 
 	const getItems = () => {
 		const getRandomArbitrary = (min, max) => {
+			//El máximo no esta incluido
 			return Math.floor(Math.random() * (max - min) + min);
 		};
 
@@ -19,30 +20,40 @@ const ItemDetailContainer = () => {
 				nombre: "Item 1",
 				descripcion: "Descripcion de prueba item 1",
 				precio: 1000,
+				stock: 15,
+				images: [],
 			},
 			{
 				id: 2,
 				nombre: "Item 2",
 				descripcion: "Descripcion de prueba item 2",
 				precio: 1100,
+				stock: 12,
+				images: [],
 			},
 			{
 				id: 3,
 				nombre: "Item 3",
 				descripcion: "Descripcion de prueba item 3",
 				precio: 1110,
+				stock: 3,
+				images: [],
 			},
 			{
 				id: 4,
 				nombre: "Item 4",
 				descripcion: "Descripcion de prueba item 4",
 				precio: 1111,
+				stock: 8,
+				images: [],
 			},
 			{
 				id: 5,
 				nombre: "Item 5",
 				descripcion: "Descripcion de prueba item 5",
 				precio: 2000,
+				stock: 4,
+				images: [],
 			},
 		];
 

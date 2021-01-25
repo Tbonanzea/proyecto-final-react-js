@@ -19,7 +19,7 @@ const ItemCount = ({ stock, initial }) => {
 	};
 
 	return (
-		<div id="wrapper" className="col-3 text-center p-4">
+		<div id="wrapper" className="text-center p-4">
 			<h3 className="mt-2">Nombre del item</h3>
 			<div className="row justify-content-around mt-2">
 				<button
