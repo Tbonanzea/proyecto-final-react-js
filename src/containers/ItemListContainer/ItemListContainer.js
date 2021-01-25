@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
-import "./ItemListContainer.css";
-import ItemList from "../ItemList/ItemList";
+import ItemList from "../../components/ItemList/ItemList";
 
 const ItemListContainer = () => {
 	const [products, setProducts] = useState([]);
@@ -60,11 +59,7 @@ const ItemListContainer = () => {
 		).catch((err) => console.log(`Error en la ejecucion: ${err}`));
 	};
 
-	return (
-		<React.Fragment>
-			<ItemList items={products} />
-		</React.Fragment>
-	);
+	return <ItemList items={products} />;
 };
 
 export default ItemListContainer;

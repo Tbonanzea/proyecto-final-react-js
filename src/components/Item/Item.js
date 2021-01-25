@@ -9,7 +9,7 @@ const Item = ({ item }) => {
 				<h5 className="card-title">{item.nombre}</h5>
 				<p className="card-text">{item.descripcion}</p>
 				<h3 className="card-text">$ {item.precio}</h3>
-				<a href="#" className="btn btn-outline-primary">
+				<a className="btn btn-outline-primary">
 					Ver Detalle
 				</a>
 			</div>
