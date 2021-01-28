@@ -9,14 +9,16 @@ function App() {
 		<div className="App">
 			<BrowserRouter>
 				<NavBar />
-				<ItemDetailContainer />
-				<ItemListContainer />
 				<Switch>
-					<Route exact path=""></Route>
-					<Route path=""></Route>
-					<Route path=""></Route>
-					<Route path=""></Route>
-					<Route path=""></Route>
+					<Route exact path="/">
+						<ItemListContainer />
+					</Route>
+					<Route path="/category/:id">
+						<ItemListContainer />
+					</Route>
+					<Route path="/item/:id">
+						<ItemDetailContainer />
+					</Route>
 				</Switch>
 			</BrowserRouter>
 		</div>

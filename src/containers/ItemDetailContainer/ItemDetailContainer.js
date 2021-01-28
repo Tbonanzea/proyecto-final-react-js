@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import ItemDetail from "../../components/ItemDetail/ItemDetail";
+import { useParams } from "react-router-dom";
 
 const ItemDetailContainer = () => {
 	useEffect(() => {
@@ -8,60 +9,72 @@ const ItemDetailContainer = () => {
 
 	const [item, setItem] = useState([]);
 
-	const getItems = () => {
-		const getRandomArbitrary = (min, max) => {
-			//El máximo no esta incluido
-			return Math.floor(Math.random() * (max - min) + min);
-		};
+	const { id } = useParams();
+	console.log(id);
 
+	const getItems = () => {
 		const fetch = [
 			{
 				id: 1,
 				nombre: "Item 1",
 				descripcion: "Descripcion de prueba item 1",
+				cilindrada: 200,
+				modelo: 2021,
+				color: "Azul",
+				stock: 12,
 				precio: 1000,
-				stock: 15,
-				images: [],
+				image: null,
 			},
 			{
 				id: 2,
 				nombre: "Item 2",
 				descripcion: "Descripcion de prueba item 2",
+				cilindrada: 200,
+				modelo: 2021,
+				color: "Azul",
+				stock: 10,
 				precio: 1100,
-				stock: 12,
-				images: [],
+				image: null,
 			},
 			{
 				id: 3,
 				nombre: "Item 3",
 				descripcion: "Descripcion de prueba item 3",
-				precio: 1110,
+				cilindrada: 200,
+				modelo: 2021,
+				color: "Azul",
 				stock: 3,
-				images: [],
+				precio: 1110,
+				image: null,
 			},
 			{
 				id: 4,
 				nombre: "Item 4",
 				descripcion: "Descripcion de prueba item 4",
+				cilindrada: 200,
+				modelo: 2021,
+				color: "Azul",
+				stock: 7,
 				precio: 1111,
-				stock: 8,
-				images: [],
+				image: null,
 			},
 			{
 				id: 5,
 				nombre: "Item 5",
 				descripcion: "Descripcion de prueba item 5",
+				cilindrada: 200,
+				modelo: 2021,
+				color: "Azul",
+				stock: 5,
 				precio: 2000,
-				stock: 4,
-				images: [],
+				image: null,
 			},
 		];
 
 		const call = new Promise((res, rej) => {
-			const random = getRandomArbitrary(1, 6);
-			console.log(random);
+			console.log(id);
 			setTimeout(() => {
-				res(fetch.filter((i) => i.id === random));
+				res(fetch.filter((i) => i.id === parseInt(id, 10)));
 			}, 2000);
 			return res;
 		});

@@ -1,17 +1,22 @@
 import { React } from "react";
 import "./Item.css";
+import { Link } from "react-router-dom";
+import foto from "../../assets/images/auto.jpg";
 
 const Item = ({ item }) => {
 	return (
-		<div className="card col-3 mt-5 ml-2">
-			<img src="..." className="card-img-top" alt="..." />
+		<div className="card col-3 mt-5 ml-2 pt-3">
+			<img src={foto} className="card-img-top" alt="..." />
 			<div className="card-body">
 				<h5 className="card-title">{item.nombre}</h5>
 				<p className="card-text">{item.descripcion}</p>
 				<h3 className="card-text">$ {item.precio}</h3>
-				<a className="btn btn-outline-primary">
+				<Link
+					to={`/item/${item.id}`}
+					className="btn btn-outline-primary"
+				>
 					Ver Detalle
-				</a>
+				</Link>
 			</div>
 		</div>
 	);
