@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import "./ItemCount.css";
 
-const ItemCount = ({ stock, initial }) => {
-	const [count, setCount] = useState(initial);
+const ItemCount = ({ subCount, addCount, onAdd, count, agregados }) => {
+	/* const [count, setCount] = useState(initial);
 
 	const [agregados, setAgregados] = useState(false);
 
@@ -16,7 +16,7 @@ const ItemCount = ({ stock, initial }) => {
 
 	const onAdd = () => {
 		count > 0 && setAgregados(true);
-	};
+	}; */
 
 	return (
 		<div id="wrapper" className="text-center p-4">
