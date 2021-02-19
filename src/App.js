@@ -1,9 +1,9 @@
 import "./App.css";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import NavBar from "./components/NavBar/NavBar";
-import ItemListContainer from "./containers/ItemListContainer/ItemListContainer";
-import ItemDetailContainer from "./containers/ItemDetailContainer/ItemDetailContainer";
-import CartContainer from "./containers/CartContainer/CartContainer";
+import ItemListContainer from "./containers/ItemListContainer";
+import ItemDetailContainer from "./containers/ItemDetailContainer";
+import CartContainer from "./containers/CartContainer";
 
 function App() {
 	return (

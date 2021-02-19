@@ -1,19 +1,19 @@
 import React, { useEffect, useState } from "react";
-import ItemList from "../../components/ItemList/ItemList";
+import ItemDetail from "../components/ItemDetail/ItemDetail";
 import { useParams } from "react-router-dom";
 
-const ItemListContainer = () => {
-	const [products, setProducts] = useState([]);
-
-	const { categoryId } = useParams();
-	console.log(categoryId);
-
+const ItemDetailContainer = () => {
 	useEffect(() => {
-		db();
+		getItems();
 	}, []);
 
-	const db = () => {
-		const items = [
+	const [item, setItem] = useState([]);
+
+	const { id } = useParams();
+	console.log(id);
+
+	const getItems = () => {
+		const fetch = [
 			{
 				id: 1,
 				nombre: "Item 1",
@@ -72,23 +72,24 @@ const ItemListContainer = () => {
 		];
 
 		const call = new Promise((res, rej) => {
+			console.log(id);
 			setTimeout(() => {
-				res(items);
+				res(fetch.filter((i) => i.id === parseInt(id, 10)));
 			}, 2000);
 			return res;
 		});
 
 		call.then(
 			(res) => {
-				setProducts(res);
+				setItem(res[0]);
 			},
 			(err) => {
 				console.log(`Error en la ejecucion: ${err}`);
 			}
-		).catch((err) => console.log(`Error en la ejecucion: ${err}`));
+		).finally(console.log(item));
 	};
 
-	return <ItemList items={products} />;
+	return <ItemDetail item={item} />;
 };
 
-export default ItemListContainer;
+export default ItemDetailContainer;
