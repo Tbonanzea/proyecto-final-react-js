@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import "./ItemDetail.css";
 import ItemCount from "../ItemCount/ItemCount";
-import Carrousel from "../Carrousel/Carrousel";
 import { Link } from "react-router-dom";
+import { useCartContext } from "../../context/CartContext";
 
 const ItemDetail = ({ item }) => {
+	const cartContext = useCartContext();
+
 	const [count, setCount] = useState(1);
 
 	const [agregados, setAgregados] = useState(false);
@@ -13,12 +15,12 @@ const ItemDetail = ({ item }) => {
 		setCount(cant);
 		setAgregados(true);
 		item.stock -= cant;
+		cartContext.addItem(item, cant);
+		console.log(cartContext.isInCart(item.id));
 	};
 	return (
 		<div className="container-fluid row m-0 p-0 mt-4 mb-4 text-center">
-			<div className="col-md">
-				<Carrousel images={item.image} />
-			</div>
+			<div className="col-md">{item.image}</div>
 			<div className="col-md-4 justify-content-center text-center">
 				<h2 className="col-12 mt-3 mt-md-0 mb-4">{item.nombre}</h2>
 				{agregados ? (

@@ -10,7 +10,6 @@ const ItemDetailContainer = () => {
 	const [item, setItem] = useState([]);
 
 	const { id } = useParams();
-	console.log(id);
 
 	const getItems = () => {
 		const fetch = [
@@ -72,10 +71,7 @@ const ItemDetailContainer = () => {
 		];
 
 		const call = new Promise((res, rej) => {
-			console.log(id);
-			setTimeout(() => {
-				res(fetch.filter((i) => i.id === parseInt(id, 10)));
-			}, 2000);
+			res(fetch.filter((i) => i.id === parseInt(id, 10)));
 			return res;
 		});
 

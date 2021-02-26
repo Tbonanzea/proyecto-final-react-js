@@ -1,11 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./NavBar.css";
 import Logo from "../Logo/Logo";
 import { Navbar, Nav, NavDropdown } from "react-bootstrap";
 import CartWidget from "../CartWidget/CartWidget";
 import { Link, NavLink } from "react-router-dom";
+import { useCartContext } from "../../context/CartContext";
 
 const NavBar = () => {
+	const contextCart = useCartContext();
 	return (
 		<Navbar className="navbar row navbar-dark bg-dark" expand="lg">
 			<Link to={`/`}>
@@ -73,8 +75,9 @@ const NavBar = () => {
 					</Link>
 				</Nav>
 				<Nav.Link className="d-flex col-2 justify-content-end">
-					<Link>
-						<CartWidget className="" /> | Items: 0
+					<Link to={`/cart`}>
+						<CartWidget className="" /> | Items:{" "}
+						{contextCart.cart.length}
 					</Link>
 				</Nav.Link>
 			</Navbar.Collapse>

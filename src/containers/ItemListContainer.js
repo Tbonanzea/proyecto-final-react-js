@@ -72,9 +72,7 @@ const ItemListContainer = () => {
 		];
 
 		const call = new Promise((res, rej) => {
-			setTimeout(() => {
-				res(items);
-			}, 2000);
+			res(items);
 			return res;
 		});
 
