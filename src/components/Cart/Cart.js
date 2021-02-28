@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import "./Cart.css";
 import { Link } from "react-router-dom";
 
-const Cart = ({ cart, cartContext }) => {
+const Cart = ({ cart, cartContext, handleCompra }) => {
 	return (
 		<div>
 			{cart.length >= 1 ? (
@@ -13,7 +13,6 @@ const Cart = ({ cart, cartContext }) => {
 								<th scope="col">Cant.</th>
 								<th scope="col">Item</th>
 								<th scope="col">P. Unitario</th>
-								<th scope="col">Eliminar</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -22,29 +21,27 @@ const Cart = ({ cart, cartContext }) => {
 									<td>{o.quantity}</td>
 									<td>{o.item.nombre}</td>
 									<td>{o.item.precio}</td>
-									<td>
-										<button
-											className="btn-danger"
-											onClick={() =>
-												cartContext.removeItem(
-													o.item.id
-												)
-											}
-										>
-											X
-										</button>
-									</td>
 								</tr>
 							))}
 						</tbody>
 					</table>
+					<button
+						className="btn-danger mr-2"
+						onClick={() => cartContext.removeItem()}
+					>
+						Borrar último elemento agregado
+					</button>
 					<button onClick={() => cartContext.clear()}>
 						Limpiar Carrito
 					</button>
+					<button className="btn-success ml-2" onClick={handleCompra}>
+						Confirmar compra
+					</button>
+
 					<h2>Total: $ {cartContext.total()}</h2>
 				</div>
 			) : (
-				<div>
+				<div className="mt-2 ml-2">
 					<h3>No hay Items en tu carrito</h3>
 					<Link
 						to={`/`}

@@ -1,5 +1,5 @@
 import React from "react";
-import { useState, useEffect, useContext } from "react";
+import { useState, useContext } from "react";
 
 export const CartContext = React.createContext([]);
 
@@ -13,7 +13,13 @@ export const CartProvider = ({ defaultValue = [], children }) => {
 		cart.map((o) => (acc = acc + o.item.precio * o.quantity));
 		return acc;
 	};
-	
+
+	const totItems = () => {
+		let acc = 0;
+		cart.map((o) => (acc = acc + o.quantity));
+		return acc;
+	};
+
 	const addItem = (item, quantity) => {
 		if (isInCart(item.id)) {
 			isInCart(item.id).quantity += quantity;
@@ -49,6 +55,7 @@ export const CartProvider = ({ defaultValue = [], children }) => {
 				removeItem,
 				isInCart,
 				clear,
+				totItems,
 			}}
 		>
 			{children}

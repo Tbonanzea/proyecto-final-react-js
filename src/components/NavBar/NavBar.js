@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useState } from "react";
 import "./NavBar.css";
 import Logo from "../Logo/Logo";
 import { Navbar, Nav, NavDropdown } from "react-bootstrap";
@@ -8,6 +8,7 @@ import { useCartContext } from "../../context/CartContext";
 
 const NavBar = () => {
 	const contextCart = useCartContext();
+	const [categorias, setCategorias] = useState([]);
 	return (
 		<Navbar className="navbar row navbar-dark bg-dark" expand="lg">
 			<Link to={`/`}>
@@ -33,6 +34,18 @@ const NavBar = () => {
 						id="basic-nav-dropdown"
 						className="row ml-3"
 					>
+						{categorias.forEach((cat) => {
+							return (
+								<NavLink
+									to={`/category/${cat.nombre}`}
+									activeClassName="currentCategory"
+									className="d-flex align-middle ml-2 mr-2"
+								>
+									<p className="m-0 mt-1">{cat.nombre}</p>
+								</NavLink>
+							);
+						})}
+						{/* 
 						<NavLink
 							to={`/category/1`}
 							activeClassName="currentCategory"
@@ -63,12 +76,12 @@ const NavBar = () => {
 						</NavLink>
 						<NavDropdown.Divider />
 						<NavLink
-							to={`/category/5`}
+							to={`/`}
 							activeClassName="currentCategory"
 							className="d-flex align-middle ml-2 mr-2"
 						>
 							<p className="m-0">Todos los productos</p>
-						</NavLink>
+						</NavLink> */}
 					</NavDropdown>
 					<Link className="ml-3">
 						<Nav.Link>Contacto</Nav.Link>
@@ -77,7 +90,7 @@ const NavBar = () => {
 				<Nav.Link className="d-flex col-2 justify-content-end">
 					<Link to={`/cart`}>
 						<CartWidget className="" /> | Items:{" "}
-						{contextCart.cart.length}
+						{contextCart.totItems()}
 					</Link>
 				</Nav.Link>
 			</Navbar.Collapse>
