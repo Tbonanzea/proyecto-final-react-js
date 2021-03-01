@@ -11,7 +11,7 @@ const CartContainer = () => {
 
 	const [orden, setOrden] = useState({});
 
-	const [idOrden, setIdOrden] = useState(0);
+	const [idOrden, setIdOrden] = useState(null);
 
 	const [usuario, setUsuario] = useState({});
 

@@ -9,8 +9,10 @@ const Cart = ({ cart, cartContext, handleChange, handleCompra, idOrden }) => {
 			handleCompra(e);
 			setOrdenFinalizada(true);
 			return;
+		} else {
+			e.preventDefault();
+			alert("Deben coincidir ambas direcciones de Email");
 		}
-		alert("Deben coincidir ambas direcciones de Email");
 	};
 	return (
 		<div>
