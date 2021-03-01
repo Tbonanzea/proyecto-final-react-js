@@ -3,7 +3,7 @@
 ## ¿Como correr el proyecto?
 
 1. Clonar el repositorio
-2. En la ruta del repositoorio ejecutar los comandos:
+2. En la ruta del repositorio ejecutar los comandos:
     - npm install
     - npm run start
 
