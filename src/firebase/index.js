@@ -1,13 +1,20 @@
 import firebase from "firebase/app";
 import "@firebase/firestore";
 
+const APIKEY = process.env.REACT_APP_FIREBASE_APIKEY;
+const AUTHDOMAIN = process.env.REACT_APP_FIREBASE_AUTHDOMAIN;
+const PROJECTID = process.env.REACT_APP_FIREBASE_PROJECTID;
+const STORAGEBUCKET = process.env.REACT_APP_FIREBASE_STORAGEBUCKET;
+const MESSAGINGSENDERID = process.env.REACT_APP_FIREBASE_MESSAGINGSENDERID;
+const APPID = process.env.REACT_APP_FIREBASE_APPID;
+
 const app = firebase.initializeApp({
-	apiKey: "AIzaSyATWljcGvLNp9YHeHyvesI9Uq5CPPY830k",
-	authDomain: "ecommerce-motomania.firebaseapp.com",
-	projectId: "ecommerce-motomania",
-	storageBucket: "ecommerce-motomania.appspot.com",
-	messagingSenderId: "1007459400072",
-	appId: "1:1007459400072:web:ec0f23bbf9fe63d5cde23d",
+	apiKey: APIKEY,
+	authDomain: AUTHDOMAIN,
+	projectId: PROJECTID,
+	storageBucket: STORAGEBUCKET,
+	messagingSenderId: MESSAGINGSENDERID,
+	appId: APPID,
 });
 
 export function getFirebase() {

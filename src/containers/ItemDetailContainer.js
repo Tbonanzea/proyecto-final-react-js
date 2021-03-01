@@ -30,11 +30,6 @@ const ItemDetailContainer = () => {
 			});
 	}, [id]);
 
-	useEffect(() => {
-		console.log(item);
-		console.log(item.categoria);
-	}, [item]);
-
 	return <ItemDetail item={item} existe={existe} />;
 };
 

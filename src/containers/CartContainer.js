@@ -13,20 +13,28 @@ const CartContainer = () => {
 
 	const [idOrden, setIdOrden] = useState(0);
 
+	const [usuario, setUsuario] = useState({});
+
+	const handleChange = (e) => {
+		setUsuario({
+			...usuario,
+
+			[e.target.name]: e.target.value,
+		});
+	};
+
 	useEffect(() => {
 		setOrden({
-			comprador: {
-				nombre: "Tomas Bonanzea",
-				telefono: 3517570903,
-				email: "tomasbonanzea98@gmail.com",
-			},
+			comprador: usuario,
 			items: cart,
 			fecha: firebase.firestore.Timestamp.fromDate(new Date()),
 			total: cartContext.total(),
+			estado: "generada",
 		});
-	}, [cart, cartContext]);
+	}, [cart, cartContext, usuario]);
 
-	const handleCompra = () => {
+	const handleCompra = (e) => {
+		e.preventDefault();
 		const db = getFirestore();
 		const ordenes = db.collection("ordenes");
 
@@ -44,7 +52,9 @@ const CartContainer = () => {
 		<Cart
 			cart={cart}
 			cartContext={cartContext}
+			handleChange={handleChange}
 			handleCompra={handleCompra}
+			idOrden={idOrden}
 		/>
 	);
 };

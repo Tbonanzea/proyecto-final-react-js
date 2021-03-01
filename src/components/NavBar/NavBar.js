@@ -1,14 +1,31 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./NavBar.css";
 import Logo from "../Logo/Logo";
 import { Navbar, Nav, NavDropdown } from "react-bootstrap";
 import CartWidget from "../CartWidget/CartWidget";
 import { Link, NavLink } from "react-router-dom";
 import { useCartContext } from "../../context/CartContext";
+import { getFirestore } from "../../firebase";
 
 const NavBar = () => {
 	const contextCart = useCartContext();
-	const [categorias, setCategorias] = useState([]);
+	const [categorias, setCategories] = useState([]);
+
+	useEffect(() => {
+		const db = getFirestore();
+		const categories = db.collection("categorias");
+		categories.get().then((querySnapshot) => {
+			querySnapshot.size === 0 && console.log("No hay resultados");
+			let result = querySnapshot.docs.map((doc) => {
+				return {
+					catId: doc.id,
+					...doc.data(),
+				};
+			});
+			setCategories(result);
+		});
+	}, []);
+
 	return (
 		<Navbar className="navbar row navbar-dark bg-dark" expand="lg">
 			<Link to={`/`}>
@@ -34,10 +51,11 @@ const NavBar = () => {
 						id="basic-nav-dropdown"
 						className="row ml-3"
 					>
-						{categorias.forEach((cat) => {
+						{categorias.map((cat) => {
 							return (
 								<NavLink
-									to={`/category/${cat.nombre}`}
+									key={cat.catId}
+									to={`/category/${cat.nombre}/${cat.catId}`}
 									activeClassName="currentCategory"
 									className="d-flex align-middle ml-2 mr-2"
 								>
@@ -45,43 +63,6 @@ const NavBar = () => {
 								</NavLink>
 							);
 						})}
-						{/* 
-						<NavLink
-							to={`/category/1`}
-							activeClassName="currentCategory"
-							className="d-flex align-middle ml-2 mr-2"
-						>
-							<p className="m-0 mt-1">Pista</p>
-						</NavLink>
-						<NavLink
-							to={`/category/2`}
-							activeClassName="currentCategory"
-							className="d-flex align-middle ml-2 mr-2"
-						>
-							<p className="m-0 mt-1">Naked</p>
-						</NavLink>
-						<NavLink
-							to={`/category/3`}
-							activeClassName="currentCategory"
-							className="d-flex align-middle ml-2 mr-2"
-						>
-							<p className="m-0 mt-1">Adventure</p>
-						</NavLink>
-						<NavLink
-							to={`/category/4`}
-							activeClassName="currentCategory"
-							className="d-flex align-middle ml-2 mr-2"
-						>
-							<p className="m-0 mt-1">Custom</p>
-						</NavLink>
-						<NavDropdown.Divider />
-						<NavLink
-							to={`/`}
-							activeClassName="currentCategory"
-							className="d-flex align-middle ml-2 mr-2"
-						>
-							<p className="m-0">Todos los productos</p>
-						</NavLink> */}
 					</NavDropdown>
 					<Link className="ml-3">
 						<Nav.Link>Contacto</Nav.Link>

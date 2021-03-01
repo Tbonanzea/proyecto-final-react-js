@@ -12,6 +12,9 @@ Para los estilos de este proyecto se utilizo bootstrap y react-bootstrap, con cs
 
 Las dos dependencias no vistas en clase que agregué, fueron react-bootstrap y react-fontawesome. Ambas fueron agregadas con el objetivo de mejorar el diseño y la calidad visual de la página.
 
+    + https://www.npmjs.com/package/react-fontawesome
+    + https://www.npmjs.com/package/react-bootstrap
+
 ### `npm run start`
 
 Este comando ejecuta el proyecto en un puerto local. Normalmente el puerto numero 3000.

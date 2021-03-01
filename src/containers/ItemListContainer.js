@@ -6,29 +6,35 @@ import { getFirestore } from "../firebase";
 const ItemListContainer = () => {
 	const [products, setProducts] = useState([]);
 
-	const { categoryId } = useParams();
-
-	console.log(`Categoria: ${categoryId}`);
+	const { id } = useParams();
 
 	useEffect(() => {
 		const db = getFirestore();
-		const itemsCollection = db.collection("items").where("stock", ">", 0);
-		itemsCollection
+		let itemCollection;
+		if (id) {
+			itemCollection = db
+				.collection("items")
+				.where("idCategoria", "==", id);
+		} else {
+			itemCollection = db.collection("items");
+		}
+
+		itemCollection
 			.get()
-			.then((query) => {
-				if (query.size === 0) {
-					console.log("Sin resultados");
-				}
-				let itemsArray = query.docs.map((doc) => {
-					return { id: doc.id, ...doc.data() };
+			.then((querySnapshot) => {
+				querySnapshot.size === 0 && console.log("error no hay items");
+				let itemsArray = querySnapshot.docs.map((doc) => {
+					return {
+						id: doc.id,
+						...doc.data(),
+					};
 				});
-				console.log(itemsArray);
 				setProducts(itemsArray);
 			})
 			.catch((err) => {
 				console.log("Error", err);
 			});
-	}, []);
+	}, [id]);
 
 	return <ItemList items={products} />;
 };

@@ -30,12 +30,13 @@ export const CartProvider = ({ defaultValue = [], children }) => {
 	};
 
 	const removeItem = (itemId) => {
-		cart.splice(
-			cart.findIndex((i) => i.id === itemId),
-			1
+		/*  */
+		const actualizado = cart.filter(
+			(
+				o // crea un nuevo array con todos menos el buscado
+			) => o.item.id !== itemId
 		);
-
-		setCart([...cart]);
+		setCart(actualizado);
 	};
 
 	const isInCart = (id) => {
