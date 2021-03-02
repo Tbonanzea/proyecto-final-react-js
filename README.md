@@ -1,5 +1,14 @@
 # MotoMania
 
+## ¿Como correr el proyecto?
+
+1. Clonar el repositorio
+2. En la ruta del repositoorio ejecutar los comandos:
+    - npm install
+    - npm run start
+
+Estos comandos instalan las dependencias necesarias y ejecutan el proyecto en un puerto local. Normalmente el puerto numero 3000.
+
 ## Temática
 
 Decidi hacer que este e-commerce se trate sobre motos, porque es uno de mis hobbies y creo tener el suficiente conocimiento sobre el tema para poder desarrollar sobre ello.
@@ -14,7 +23,3 @@ Las dos dependencias no vistas en clase que agregué, fueron react-bootstrap y r
 
     + https://www.npmjs.com/package/react-fontawesome
     + https://www.npmjs.com/package/react-bootstrap
-
-### `npm run start`
-
-Este comando ejecuta el proyecto en un puerto local. Normalmente el puerto numero 3000.
